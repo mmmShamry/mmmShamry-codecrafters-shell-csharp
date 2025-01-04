@@ -6,7 +6,7 @@ using System.Net.Sockets;
 
 while (true)
 {
-    List<string> builtins = new List<string> { "echo", "exit" };
+    List<string> builtins = new List<string> { "echo", "exit" ,"type"};
     
     Console.Write("$ ");
     var command = Console.ReadLine().ToLower();
