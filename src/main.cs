@@ -6,16 +6,32 @@ using System.Net.Sockets;
 
 while (true)
 {
+    List<string> builtins = new List<string> { "echo", "exit" };
+    
     Console.Write("$ ");
-    var command = Console.ReadLine();
+    var command = Console.ReadLine().ToLower();
+    
     if (command == "exit 0")
     {
         break;
     }
-    else if (command.Contains("echo"))
+    else if (command.StartsWith("echo"))
     {
         Console.WriteLine($"{command.Substring(5)}");
         continue;
+    }
+    else if (command.StartsWith("type"))
+    {
+        if (builtins.Contains(command.Substring(5)))
+        {
+            Console.WriteLine($"{command.Substring(5)} is a shell builtin");
+            continue;
+        }
+        else
+        {
+            Console.WriteLine($"{command.Substring(5)}: not found");
+            continue;
+        }
     }
     else
     {
