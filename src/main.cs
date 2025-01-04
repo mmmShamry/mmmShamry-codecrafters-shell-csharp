@@ -12,6 +12,11 @@ while (true)
     {
         break;
     }
+    else if (command.Contains("echo"))
+    {
+        Console.WriteLine($"{command.Substring(5)}");
+        continue;
+    }
     else
     {
         Console.WriteLine($"{command}: command not found");
